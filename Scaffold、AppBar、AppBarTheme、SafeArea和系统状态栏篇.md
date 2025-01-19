@@ -130,7 +130,7 @@ systemNavigationBarDividerColor
 在部分安卓手机上，底部系统导航栏下方存在一根黑色的条状物(手势导航线)，可以设置它的颜色等。
 
 
-> ## 手机不兼容问题，如 小米手机。
+## 手机不兼容问题，如 小米手机。
 statusBarIconBrightness  
 systemNavigationBarDividerColor
 
