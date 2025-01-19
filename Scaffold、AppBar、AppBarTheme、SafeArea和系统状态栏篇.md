@@ -11,7 +11,7 @@
 + SystemUiOverlayStyle 系统状态栏 和 沉浸式状态栏(透明状态栏) 和 高斯模糊方案
 + 底部导航栏 和 沉浸式导航栏(探索三大金刚)
 + 底部小黑条
-+ 手机不兼容问题，如 小米手机。
++ 手机不兼容问题。
 
 ### Scaffold、页面嵌套
 > 推荐把Scaffold作为每个页面的基础组件，并为它搭配上AppBar组件。
@@ -66,16 +66,31 @@ AppBarTheme(
 安全区域指的是 排除刘海屏，水滴屏和圆角屏幕的边缘的区域。
 ListView 默认是有一个SafeArea区域Padding的，当你为ListView设置Padding时，这个Safe边距将会失效。
 
-> SafeArea 不包括AppBar 和 BottomNavigationBar 
++ SafeArea 不包括AppBar 和 BottomNavigationBar 
++ MediaQuery.of(context).padding
++ MediaQuery.of(context).viewPadding
++ MediaQuery.of(context).viewInsets
 
-
-> MediaQuery.of(context).padding
-> MediaQuery.of(context).viewPadding
-> MediaQuery.of(context).viewInsets
-
-通过viewPadding字段可以取到屏幕四边的安全区域尺寸，
+通过viewPadding字段可以取到屏幕四边的安全区域尺寸，  
 viewPadding.top 代表顶部安全区域
 
-通过设置extendBodyBehindAppBar之后，可以让body的内容跑到Appbar和状态栏后方，但是可以通过 SafeArea 或  viewPadding.top 让部分内容 不被Appbar 覆盖。
+通过设置extendBodyBehindAppBar之后，可以让body的内容跑到Appbar和状态栏后方，
+但是可以通过 SafeArea 或  viewPadding.top 让部分内容 不被Appbar 覆盖。
 
 ### SystemUiOverlayStyle 系统状态栏 和 沉浸式状态栏(透明状态栏) 和 高斯模糊方案
+
+## 底部导航栏 和 沉浸式导航栏(探索三大金刚)
+安卓是可以打开底部三大金刚导航栏的，开启后，屏幕底部显示三个按钮，这个时候如果你使用了extendBody，需要做好适配，不然内容会沉浸进去，导致显示异常。
+
+## 底部导航条 - 小黑条
+在部分安卓手机上，底部系统导航栏下方存在一根黑色的条状物，可以设置它的颜色等。
+
+
+> ## 手机不兼容问题，如 小米手机。
+statusBarIconBrightness  
+systemNavigationBarDividerColor
+
+这个两个属性在部分安卓手机上可能出现无效的情况，大概率是小米等安卓厂商强制覆写了该字段，因为默认会开启 强制颜色反转属性，。 
+设置systemNavigationBarContrastEnforced 无效，我猜测这个字段是关闭反转的，但是无效。  
+不用过于担心，因为小黑条自动设置颜色了，大多数情况下 都是正常的。  
+但是为了兼容IOS，你依然需要按照预期去设置这些参数。
