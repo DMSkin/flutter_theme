@@ -200,3 +200,30 @@ logic.statusData == Status.successed.code
 Status.convert(4).toString() // 输出成功
 ```
 
+## 可空字段、late、和final
+可空字段别乱用 ！  
+不得不吐槽我们公司的哥们，不是，谁教你这么用的啊？？？？
+
+```DART
+model!.content ?? ""
+```
+
+上线报错后，被客户🐴，看我不怼死你  
+
+还有这种
+```DART
+model!.unix! * 1000
+
+Image.asset(image!,)
+```
+
+无力吐槽。正确用法如下：
+```DART
+model?.content ?? "" ✅
+```
+
+late 是延迟初始化，如果没有被初始化是要报错的。  
+final 只能被赋值第一次  
+const 常量  
+
+基础知识多用多记啊。
