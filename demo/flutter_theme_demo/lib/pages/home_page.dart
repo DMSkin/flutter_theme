@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_theme_demo/theme_service.dart';
+import 'package:flutter_theme_demo/services/theme_service.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -39,6 +39,40 @@ class _HomePageState extends State<HomePage> {
           SizedBox(
             height: 20,
           ),
+          SizedBox(
+            height: 200,
+            child: Card(
+              child: Center(child: Text("默认Card")),
+            ),
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          SizedBox(
+            height: 200,
+            child: DecoratedBox(
+              decoration: BoxDecoration(
+                color: themeData.cardTheme.color,
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: Center(child: Text("色差Card")),
+            ),
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          TextField(
+            decoration: InputDecoration(hintText: "输入用户名"),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          TextField(
+            decoration: InputDecoration(hintText: "输入密码"),
+          ),
+          SizedBox(
+            height: 20,
+          ),
           Text(
             "bodyLarge",
             style: themeData.textTheme.bodyLarge,
@@ -69,7 +103,6 @@ class _HomePageState extends State<HomePage> {
           SizedBox(
             height: 20,
           ),
-
         ],
       ),
     );
